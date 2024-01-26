@@ -56,6 +56,9 @@ RUN pecl install xdebug-3.3.1 \
    # && docker-php-ext-enable redis \
    && docker-php-ext-enable xdebug
 
+# Copy the xdebug configuration
+COPY xdebug.ini "$PHP_INI_DIR/conf.d"
+
 # Use the default production configuration for PHP runtime arguments, see
 # https://github.com/docker-library/docs/tree/master/php#configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"

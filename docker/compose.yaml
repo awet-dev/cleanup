@@ -9,11 +9,12 @@
 # https://github.com/docker/awesome-compose
 services:
   server:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build:
       dockerfile: Dockerfile
     volumes:
       - ./../application:/var/www/html
-      - ./xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     ports:
       - 80:80
 
