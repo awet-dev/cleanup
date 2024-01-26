@@ -51,9 +51,10 @@ RUN sh ./install-composer.sh \
 # Add PECL extensions, see
 # https://github.com/docker-library/docs/tree/master/php#pecl-extensions
 # This example adds the 'redis' and 'xdebug' extensions.
-# RUN pecl install redis-5.3.7 \
-#    && pecl install xdebug-3.2.1 \
-#    && docker-php-ext-enable redis xdebug
+RUN pecl install xdebug-3.3.1 \
+   # && pecl install redis-5.3.7 \
+   # && docker-php-ext-enable redis \
+   && docker-php-ext-enable xdebug
 
 # Use the default production configuration for PHP runtime arguments, see
 # https://github.com/docker-library/docs/tree/master/php#configuration
