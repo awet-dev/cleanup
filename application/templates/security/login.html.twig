@@ -5,20 +5,21 @@
 {% block body %}
 
     <form method="post" class="container my-5 w-50 border rounded p-5">
-        {% if error %}
-            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+        <legend class="d-flex justify-content-center align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <span>Login</span>
+        </legend>
 
         {% if app.user %}
-            <div class="mb-3">
+            <div class="alert alert-info">
                 You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
         {% endif %}
 
-        <legend class="d-flex justify-content-center align-items-center gap-2 mb-3">
-            <i class="fa-solid fa-hand-sparkles"></i>
-            <span>Login Form</span>
-        </legend>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
         <div class="mb-3">
             <label for="username" class="form-label">Email</label>
             <input type="email" class="form-control" value="{{ last_username }}" name="_username" id="username"
@@ -37,7 +38,7 @@
 
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex gap-2">
-                <button class="btn btn-lg btn-primary" type="submit">
+                <button class="btn btn btn-outline-primary" type="submit">
                     Sign in
                 </button>
 

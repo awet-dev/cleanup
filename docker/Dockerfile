@@ -54,7 +54,6 @@ RUN sh ./install-composer.sh \
 RUN pecl install xdebug-3.3.1 \
    # && pecl install redis-5.3.7 \
    # && docker-php-ext-enable redis \
-   && docker-php-ext-enable xdebug
 
 # Copy the xdebug configuration
 COPY xdebug.ini "$PHP_INI_DIR/conf.d"
