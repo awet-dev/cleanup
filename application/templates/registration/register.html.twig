@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="container my-5 w-50 border rounded p-5">
+    <div class="mx-auto my-5 w-50 border rounded p-5">
         {% for flash_error in app.flashes('verify_email_error') %}
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
