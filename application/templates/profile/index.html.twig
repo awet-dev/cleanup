@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <div class="mx-auto my-5 w-50 border rounded p-5">
+        {% for flash_error in app.flashes('profile_error') %}
+            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        <legend class="d-flex justify-content-center align-items-center gap-2 mb-3">
+            <i class="fa-solid fa-hand-sparkles"></i>
+            <span>Profile</span>
+        </legend>
+
+        {{ form_start(profileForm) }}
+        {{ form_errors(profileForm) }}
+
+        {{ form_row(profileForm.email) }}
+        {{ form_row(profileForm.password, {
+            label: 'Old Password'
+        }) }}
+
+        {{ form_row(profileForm.plainPassword, {
+            label: 'Password'
+        }) }}
+
+        <div class="d-flex justify-content-between">
+            <div class="d-flex gap-2">
+                <button class="btn btn btn-outline-primary" type="submit">
+                    Update
+                </button>
+            </div>
+
+            <a href="{{ path('dashboard_index') }}" class="align-self-end">Back Dashboard</a>
+        </div>
+
+        {{ form_end(profileForm) }}
+    </div>
+{% endblock %}
