@@ -41,9 +41,6 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->emailVerifier->sendEmailConfirmation($user, 'app_verify_email');
-            $this->addFlash('success', 'We have send you an email to verify your email.');
-
             return $this->redirectToRoute('app_login');
         }
 
@@ -60,7 +57,6 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('danger', 'check this error ' . $exception->getReason());
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
             return $this->redirectToRoute('app_register');
